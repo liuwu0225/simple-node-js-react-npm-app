@@ -6,12 +6,17 @@ pipeline {
         }
     }
     environment {
-        PATH = "C:\\Users\\i342835\\.jenkins\\workspace\\simple-node-js-react-npm-app"
+        CI = 'true'
     }
     stages {
         stage('Build') { 
             steps {
                 sh 'npm install' 
+            }
+        }
+        stage('Test'){
+            steps{
+                sh './jenkins/scripts/test.sh'
             }
         }
     }
